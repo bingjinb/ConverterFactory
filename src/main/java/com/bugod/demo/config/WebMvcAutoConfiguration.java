@@ -3,7 +3,7 @@ package com.bugod.demo.config;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.bugod.demo.common.factory.IEnumConverterFactory;
+import com.bugod.demo.common.factory.EnumConverterFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
@@ -22,7 +22,7 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverterFactory(new IEnumConverterFactory());
+        registry.addConverterFactory(new EnumConverterFactory());
     }
 
     @Override
@@ -34,6 +34,7 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.removeIf(e -> e instanceof MappingJackson2HttpMessageConverter);
         converters.removeIf(e -> e instanceof StringHttpMessageConverter);
+        StringHttpMessageConverter stringMessageConverter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
         FastJsonHttpMessageConverter jsonMessageConverter = new FastJsonHttpMessageConverter();
         FastJsonConfig jsonConfig = new FastJsonConfig();
         List<MediaType> supportedMediaTypes = Arrays.asList(
@@ -69,5 +70,6 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
         jsonMessageConverter.setFastJsonConfig(jsonConfig);
         jsonMessageConverter.setDefaultCharset(StandardCharsets.UTF_8);
         converters.add(jsonMessageConverter);
+        converters.add(stringMessageConverter);
     }
 }

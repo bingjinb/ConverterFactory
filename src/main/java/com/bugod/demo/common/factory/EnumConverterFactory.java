@@ -3,12 +3,13 @@ package com.bugod.demo.common.factory;
 import com.bugod.demo.common.constant.BaseEnum;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.WeakHashMap;
 
-public class IEnumConverterFactory implements ConverterFactory<String, BaseEnum> {
+public class EnumConverterFactory implements ConverterFactory<String, BaseEnum> {
     private static final Map<Class, Converter> converterMap = new WeakHashMap<>();
 
     @Override

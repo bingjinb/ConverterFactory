@@ -7,7 +7,9 @@ import com.bugod.demo.common.entity.ResultWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 
@@ -39,14 +41,6 @@ public class GenderController extends BaseController {
         if (Objects.isNull(genderEnum)) {
            return error(ErrorCodeEnum.ARGS_NULL, "gender 不能为空");
         }
-        return success(request);
-    }
-
-    @ApiOperation(value = "Post获取枚举", notes = "Post获取枚举")
-    @GetMapping("/post")
-    public ResultWrapper post(GenderPO request) {
-        GenderEnum genderEnum = request.getGender();
-        log.info("-------> post key:{} , value:{}", genderEnum.getKey(), genderEnum.name());
         return success(request);
     }
 

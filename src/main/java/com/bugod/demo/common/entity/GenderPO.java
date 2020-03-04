@@ -3,6 +3,7 @@ package com.bugod.demo.common.entity;
 import com.bugod.demo.common.constant.GenderEnum;
 import lombok.Data;
 
+
 /**
  * <pre>
  * Copyright (C) 2020 XXX股份有限公司

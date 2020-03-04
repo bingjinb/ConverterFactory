@@ -8,6 +8,9 @@ import java.util.Objects;
 public enum ErrorCodeEnum {
     SUCCESS(0, "success"),
     ARGS_ERROR(901, "参数验证错误"),
+    ARGS_INVALID(902, "参数非法"),
+    ARGS_NULL(903, "参数不能为空"),
+
     FAIL(999 , "系统异常");
 
 

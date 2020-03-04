@@ -1,5 +1,6 @@
 package com.bugod.demo.core;
 
+import com.bugod.demo.common.constant.ErrorCodeEnum;
 import com.bugod.demo.common.constant.GenderEnum;
 import com.bugod.demo.common.entity.GenderPO;
 import com.bugod.demo.common.entity.ResultWrapper;
@@ -7,6 +8,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Objects;
 
 /**
  * <pre>
@@ -33,7 +36,9 @@ public class GenderController extends BaseController {
     @GetMapping("/get")
     public ResultWrapper get(GenderPO request) {
         GenderEnum genderEnum = request.getGender();
-        log.info("-------> get key:{} , value:{}", genderEnum.getKey(), genderEnum.name());
+        if (Objects.isNull(genderEnum)) {
+           return error(ErrorCodeEnum.ARGS_NULL, "gender 不能为空");
+        }
         return success(request);
     }
 

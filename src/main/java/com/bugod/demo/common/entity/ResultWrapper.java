@@ -39,7 +39,6 @@ public class ResultWrapper<T> implements Serializable {
         this.code = code;
         this.message = message;
         this.stack = stack;
-        this.success = false;
     }
 
 

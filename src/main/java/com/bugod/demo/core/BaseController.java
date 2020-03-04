@@ -47,13 +47,11 @@ public class BaseController {
 
     public ResultWrapper error(Integer key, String value, String stack) {
         ResultWrapper resultWrapper = new ResultWrapper(key, value, stack);
-        resultWrapper.setSuccess(false);
         return resultWrapper;
     }
 
     public ResultWrapper error(Integer key, String value) {
         ResultWrapper resultWrapper = new ResultWrapper(key, value);
-        resultWrapper.setSuccess(false);
         return resultWrapper;
     }
 
@@ -68,13 +66,11 @@ public class BaseController {
 
     public ResultWrapper error(ErrorCodeEnum errorCodeEnum) {
         ResultWrapper resultWrapper = new ResultWrapper(errorCodeEnum.getKey(), errorCodeEnum.getValue());
-        resultWrapper.setSuccess(false);
         return resultWrapper;
     }
 
     public ResultWrapper error(ErrorCodeEnum errorCodeEnum, String stack) {
-        ResultWrapper resultWrapper = new ResultWrapper(errorCodeEnum.getKey(), errorCodeEnum.getValue());
-        resultWrapper.setSuccess(false);
+        ResultWrapper resultWrapper = new ResultWrapper(errorCodeEnum.getKey(), errorCodeEnum.getValue(), stack);
         return resultWrapper;
     }
 }

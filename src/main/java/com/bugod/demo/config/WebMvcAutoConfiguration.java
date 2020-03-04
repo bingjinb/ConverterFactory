@@ -54,7 +54,17 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
                 MediaType.TEXT_PLAIN,
                 MediaType.TEXT_XML);
         jsonMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
-        jsonConfig.setSerializerFeatures(SerializerFeature.SortField, SerializerFeature.WriteEnumUsingToString, SerializerFeature.QuoteFieldNames, SerializerFeature.SkipTransientField, SerializerFeature.BrowserCompatible, SerializerFeature.DisableCircularReferenceDetect);
+        jsonConfig.setSerializerFeatures(SerializerFeature.SortField,
+                SerializerFeature.WriteEnumUsingToString,
+                SerializerFeature.QuoteFieldNames,
+                SerializerFeature.SkipTransientField,
+                SerializerFeature.BrowserCompatible,
+                SerializerFeature.DisableCircularReferenceDetect,
+                SerializerFeature.WriteNullStringAsEmpty,
+                SerializerFeature.WriteNullBooleanAsFalse,
+                SerializerFeature.WriteNullListAsEmpty,
+                SerializerFeature.WriteNullNumberAsZero,
+                SerializerFeature.WriteMapNullValue);
         jsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");
         jsonMessageConverter.setFastJsonConfig(jsonConfig);
         jsonMessageConverter.setDefaultCharset(StandardCharsets.UTF_8);
